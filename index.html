@@ -6,7 +6,7 @@
     <title>ABBA - Servicio Técnico de Precisión</title>
     <!-- Google Fonts: Poppins -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome -->
+    <!-- Font Awesome para Iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -15,8 +15,8 @@
             --celeste-circuito: #4CA1AF;
             --gris-pizarra: #333333;
             --blanco: #FFFFFF;
-            --fondo-light: #F4F7F8;
-            --shadow: 0 10px 30px rgba(78, 59, 115, 0.1);
+            --fondo-gris: #f8f9fa;
+            --transicion: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
         * {
@@ -30,6 +30,7 @@
             background-color: var(--blanco);
             color: var(--gris-pizarra);
             overflow-x: hidden;
+            line-height: 1.6;
         }
 
         /* --- Header & Logo --- */
@@ -43,44 +44,36 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
             backdrop-filter: blur(10px);
         }
 
-        .logo-container {
+        .logo-box {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
             text-decoration: none;
         }
 
-        .logo-img {
-            height: 50px; /* Ajusta según tu logo */
-            width: auto;
+        /* Simulando el isotipo del monitor con herramientas */
+        .logo-circle {
+            background: var(--lila-tecnico);
+            width: 45px;
+            height: 45px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--celeste-circuito);
+            font-size: 1.2rem;
         }
 
         .logo-text {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             font-weight: 700;
             color: var(--lila-tecnico);
             letter-spacing: 1px;
         }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 20px;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: var(--lila-tecnico);
-            font-size: 0.9rem;
-            font-weight: 600;
-            transition: 0.3s;
-        }
-
-        nav a:hover { color: var(--celeste-circuito); }
 
         /* --- Hero --- */
         .hero {
@@ -88,85 +81,97 @@
             background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            gap: 50px;
         }
 
         .hero-content h1 {
             font-size: 3.5rem;
             color: var(--lila-tecnico);
             line-height: 1.1;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
+
+        .hero-content h1 span { color: var(--celeste-circuito); }
 
         .hero-content p {
             font-size: 1.1rem;
-            max-width: 500px;
-            margin-bottom: 30px;
+            max-width: 550px;
+            margin-bottom: 35px;
+            border-left: 4px solid var(--celeste-circuito);
+            padding-left: 20px;
         }
 
-        .hero-image img {
+        .hero-img {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-img img {
             width: 100%;
-            max-width: 500px;
-            border-radius: 20px;
-            box-shadow: var(--shadow);
+            max-width: 450px;
+            border-radius: 30px;
+            box-shadow: 20px 20px 60px rgba(0,0,0,0.1);
         }
 
-        /* --- Servicios Cards --- */
+        /* --- Grid de Servicios --- */
         .services {
-            padding: 80px 8%;
+            padding: 100px 8%;
             text-align: center;
+            background: var(--blanco);
         }
 
         .section-title {
             color: var(--lila-tecnico);
             font-size: 2.5rem;
             margin-bottom: 50px;
+            position: relative;
         }
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
         }
 
         .card {
             background: var(--blanco);
             padding: 40px 30px;
-            border-radius: 15px;
+            border-radius: 20px;
             border: 1px solid #eee;
             cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: var(--transicion);
             text-align: left;
+            position: relative;
         }
 
         .card:hover {
             transform: translateY(-10px);
             border-color: var(--celeste-circuito);
-            box-shadow: var(--shadow);
+            box-shadow: 0 20px 40px rgba(78, 59, 115, 0.1);
         }
 
         .card i {
-            font-size: 2.5rem;
-            color: var(--celeste-circuito);
-            margin-bottom: 20px;
+            font-size: 2.8rem;
+            color: var(--lila-tecnico);
+            margin-bottom: 25px;
         }
 
         .card h3 {
             color: var(--lila-tecnico);
             margin-bottom: 15px;
+            font-size: 1.3rem;
         }
 
-        .card p { font-size: 0.9rem; color: #666; }
+        .card p { color: #666; font-size: 0.95rem; }
 
-        /* --- MODAL DE ENFOQUE --- */
+        /* --- MODAL (ENFOQUE) --- */
         .modal-overlay {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(78, 59, 115, 0.8);
-            backdrop-filter: blur(8px);
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(78, 59, 115, 0.85);
+            backdrop-filter: blur(10px);
             display: none;
             justify-content: center;
             align-items: center;
@@ -176,200 +181,203 @@
 
         .modal-content {
             background: var(--blanco);
+            max-width: 600px;
             width: 100%;
-            max-width: 500px;
-            padding: 40px;
-            border-radius: 20px;
+            padding: 50px;
+            border-radius: 25px;
             text-align: center;
             position: relative;
             animation: zoomIn 0.3s ease;
         }
 
         @keyframes zoomIn {
-            from { transform: scale(0.8); opacity: 0; }
+            from { transform: scale(0.9); opacity: 0; }
             to { transform: scale(1); opacity: 1; }
         }
 
         .modal-content i {
-            font-size: 4rem;
+            font-size: 4.5rem;
             color: var(--celeste-circuito);
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
-        .modal-content h2 {
-            color: var(--lila-tecnico);
-            margin-bottom: 15px;
-        }
+        .modal-content h2 { color: var(--lila-tecnico); margin-bottom: 20px; }
+        .modal-content p { margin-bottom: 35px; font-size: 1.1rem; color: #444; }
 
-        .modal-content p {
-            margin-bottom: 30px;
-            color: #555;
-        }
-
-        .modal-actions {
+        .btn-container {
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 12px;
         }
 
         .btn {
-            padding: 15px 25px;
-            border-radius: 10px;
+            padding: 18px 30px;
+            border-radius: 12px;
             text-decoration: none;
             font-weight: 700;
-            cursor: pointer;
-            transition: 0.3s;
+            transition: var(--transicion);
             border: none;
-        }
-
-        .btn-ws {
-            background: #25D366;
-            color: white;
+            cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
+            font-size: 1rem;
         }
 
-        .btn-ws:hover { background: #1eb954; transform: scale(1.02); }
+        .btn-wa { background: #25D366; color: white; }
+        .btn-wa:hover { background: #1eb954; transform: scale(1.02); }
 
-        .btn-close {
-            background: var(--fondo-light);
-            color: var(--lila-tecnico);
+        .btn-close { background: #f0f0f0; color: var(--lila-tecnico); }
+        .btn-close:hover { background: #e5e5e5; }
+
+        /* --- SECCIÓN AYUDA GENERAL (CLIENTES INDECISOS) --- */
+        .help-section {
+            background: var(--lila-tecnico);
+            padding: 80px 8%;
+            text-align: center;
+            color: white;
         }
 
-        .btn-close:hover { background: #e2e8f0; }
+        .help-section h2 { font-size: 2.2rem; margin-bottom: 15px; }
+        .help-section p { opacity: 0.9; margin-bottom: 35px; max-width: 600px; margin-left: auto; margin-right: auto; }
+        
+        .btn-general {
+            background: var(--celeste-circuito);
+            color: white;
+            display: inline-flex;
+            max-width: 350px;
+            margin: 0 auto;
+        }
+        .btn-general:hover { background: #3d8d99; transform: translateY(-5px); }
 
         footer {
-            background: var(--lila-tecnico);
-            color: white;
             padding: 40px 8%;
             text-align: center;
-            margin-top: 50px;
+            background: #1a1a1a;
+            color: #888;
+            font-size: 0.9rem;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            .hero { flex-direction: column; text-align: center; padding-top: 120px; }
-            .hero-content h1 { font-size: 2.2rem; }
-            nav { display: none; }
+            .hero { flex-direction: column; text-align: center; padding-top: 130px; }
+            .hero-content h1 { font-size: 2.5rem; }
+            .modal-content { padding: 30px 20px; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <a href="#" class="logo-container">
-            <!-- Reemplaza 'logo.png' con el link de tu imagen subida -->
-            <img src="https://i.ibb.co/L8N8VwY/logo-abba.png" alt="ABBA Logo" class="logo-img" onerror="this.src='https://via.placeholder.com/50x50?text=A'">
+        <a href="#" class="logo-box">
+            <div class="logo-circle"><i class="fas fa-desktop"></i></div>
             <span class="logo-text">ABBA</span>
         </a>
-        <nav>
-            <ul>
-                <li><a href="#servicios">Servicios</a></li>
-                <li><a href="https://wa.me/543816156373">Contacto</a></li>
-            </ul>
-        </nav>
     </header>
 
     <section class="hero">
         <div class="hero-content">
-            <h1>Soluciones Técnicas de Laboratorio</h1>
-            <p>Especialistas en ingeniería electrónica aplicada a la informática. Rigor técnico y resultados precisos.</p>
-            <a href="#servicios" class="btn btn-close" style="display:inline-block; border: 2px solid var(--lila-tecnico)">Ver Servicios</a>
+            <h1>Soluciones en <span>Ingeniería</span> Electrónica e IT</h1>
+            <p>Especialistas en la restauración técnica y mantenimiento de alto nivel. Diagnósticos precisos basados en rigor científico.</p>
+            <a href="#servicios" class="btn btn-wa" style="display:inline-flex; background: var(--lila-tecnico);">Explorar Servicios</a>
         </div>
-        <div class="hero-image">
-            <img src="https://images.unsplash.com/photo-1597733336794-12d05021d510?auto=format&fit=crop&w=800&q=80" alt="Tech Lab">
+        <div class="hero-img">
+            <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=800&q=80" alt="Tech Lab">
         </div>
     </section>
 
     <section class="services" id="servicios">
-        <h2 class="section-title">Nuestras Especialidades</h2>
-        <p style="margin-top: -40px; margin-bottom: 40px; color: #777;">Haz clic en un servicio para más información</p>
+        <h2 class="section-title">Nuestros Servicios de Laboratorio</h2>
+        <p style="margin-top:-30px; margin-bottom:40px; color:#888;">Selecciona una especialidad para ver detalles y presupuesto</p>
         
-        <div class="services-grid" id="grid-servicios">
-            <!-- Las cards se generan con JS para manejar los mensajes personalizados fácilmente -->
+        <div class="services-grid" id="main-grid">
+            <!-- Cards generadas por JS -->
         </div>
     </section>
 
-    <!-- Estructura del Modal -->
-    <div class="modal-overlay" id="modal-overlay">
+    <!-- SECCIÓN FINAL: ASESORAMIENTO PARA INDECISOS -->
+    <section class="help-section">
+        <h2>¿No estás seguro de qué necesita tu equipo?</h2>
+        <p>Si tu computadora falla pero no sabes el motivo, o necesitas asesoramiento técnico general, estamos para ayudarte sin compromiso.</p>
+        <a href="https://wa.me/543816156373?text=Hola%20ABBA!%20Tengo%20un%20problema%20con%20mi%20equipo%20pero%20no%20estoy%20seguro%20de%20qué%20servicio%20necesito.%20¿Me%20podrían%20asesorar?" 
+           class="btn btn-general" target="_blank">
+           <i class="fab fa-whatsapp"></i> SOLICITAR ASESORAMIENTO GENERAL
+        </a>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 ABBA Servicio Técnico - Reparación de PC. <br> San Miguel de Tucumán, Argentina.</p>
+    </footer>
+
+    <!-- Overlay de Enfoque (Modal) -->
+    <div class="modal-overlay" id="overlay">
         <div class="modal-content">
-            <i id="modal-icon"></i>
-            <h2 id="modal-title"></h2>
-            <p id="modal-desc"></p>
-            <div class="modal-actions">
-                <a href="#" id="modal-ws-link" target="_blank" class="btn btn-ws">
-                    <i class="fab fa-whatsapp"></i> Consultar por WhatsApp
+            <i id="m-icon"></i>
+            <h2 id="m-title"></h2>
+            <p id="m-desc"></p>
+            <div class="btn-container">
+                <a href="#" id="m-link" class="btn btn-wa" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Consultar por este servicio
                 </a>
-                <button class="btn btn-close" onclick="closeModal()">Volver atrás</button>
+                <button class="btn btn-close" onclick="cerrarEnfoque()">Volver al menú</button>
             </div>
         </div>
     </div>
 
-    <footer>
-        <p>&copy; 2024 ABBA Servicio Técnico de Reparación de PC.</p>
-        <p style="font-size: 0.8rem; opacity: 0.7; margin-top: 10px;">San Miguel de Tucumán, Argentina.</p>
-    </footer>
-
     <script>
-        // Datos de servicios con sus mensajes personalizados para WhatsApp
-        const servicios = [
+        const telefono = "543816156373";
+
+        const serviciosData = [
             {
-                id: 1,
-                titulo: "Reparación PC y Laptop",
+                titulo: "Reparación de PC y Laptop",
                 icono: "fas fa-laptop-medical",
-                resumen: "Diagnóstico y solución de fallas críticas.",
-                detalle: "Realizamos reparaciones a nivel componente, cambios de pantalla, teclados, limpieza interna y solución de problemas de encendido.",
-                mensajeWA: "Hola ABBA! Necesito un presupuesto para la REPARACIÓN de mi computadora/laptop."
+                resumen: "Soluciones a nivel componente y hardware.",
+                detalle: "Especialistas en fallas de placa base, reparación de circuitos integrados, cambio de pantallas y solución de problemas de encendido.",
+                msjWA: "Hola ABBA! Necesito un presupuesto para REPARACIÓN de mi equipo."
             },
             {
-                id: 2,
-                titulo: "Redes Informáticas",
+                titulo: "Instalación de Redes",
                 icono: "fas fa-network-wired",
-                resumen: "Instalación y configuración profesional.",
-                detalle: "Cableado estructurado, configuración de routers, extensión de señal Wi-Fi y optimización de redes para empresas y hogares.",
-                mensajeWA: "Hola ABBA! Me interesa contratar el servicio de INSTALACIÓN DE REDES."
+                resumen: "Infraestructura de red robusta y segura.",
+                detalle: "Diseño e instalación de redes cableadas (Ethernet) y optimización de señal Wi-Fi para hogares, oficinas y locales comerciales.",
+                msjWA: "Hola ABBA! Me interesa el servicio de INSTALACIÓN DE REDES."
             },
             {
-                id: 3,
-                titulo: "Mantenimiento Técnico",
-                icono: "fas fa-broom",
-                resumen: "Limpieza y prevención de hardware.",
-                detalle: "Limpieza física profunda, cambio de pasta térmica de alta calidad y optimización de sistema para evitar sobrecalentamiento.",
-                mensajeWA: "Hola ABBA! Quiero realizar una LIMPIEZA Y MANTENIMIENTO preventivo a mi equipo."
+                titulo: "Limpieza y Mantenimiento",
+                icono: "fas fa-fan",
+                resumen: "Prevención de fallas térmicas.",
+                detalle: "Limpieza profunda de coolers, cambio de pasta térmica de alta conductividad y optimización física para alargar la vida útil.",
+                msjWA: "Hola ABBA! Quiero realizar un MANTENIMIENTO PREVENTIVO a mi equipo."
             },
             {
-                id: 4,
-                titulo: "Hardware a Medida",
+                titulo: "Instalación de Programas",
+                icono: "fas fa-compact-disc",
+                resumen: "Sistemas operativos y software profesional.",
+                detalle: "Formateo, instalación de Windows/Linux, suites de diseño, ingeniería y optimización de rendimiento de software.",
+                msjWA: "Hola! Necesito INSTALAR PROGRAMAS o formatear mi computadora."
+            },
+            {
+                titulo: "Equipos a Medida y Hardware",
                 icono: "fas fa-microchip",
-                resumen: "Venta y armado de equipos premium.",
-                detalle: "Asesoramiento para equipos de diseño, gaming o servidores. Venta de componentes con garantía técnica.",
-                mensajeWA: "Hola! Busco asesoramiento para la COMPRA/ARMADO de un equipo a medida."
+                resumen: "Armado de PC según tus necesidades.",
+                detalle: "Venta de hardware seleccionado y armado de computadoras personalizadas para Gaming, Diseño o Estaciones de Trabajo.",
+                msjWA: "Hola ABBA! Busco asesoramiento para el ARMADO DE UNA PC a medida."
             },
             {
-                id: 5,
                 titulo: "Recuperación de Datos",
                 icono: "fas fa-database",
-                resumen: "Rescate de información sensible.",
-                detalle: "Laboratorio especializado en recuperación de archivos de discos rígidos, SSD y memorias dañadas.",
-                mensajeWA: "Hola ABBA! Necesito ayuda urgente para la RECUPERACIÓN DE DATOS de un disco."
-            },
-            {
-                id: 6,
-                titulo: "Instalación de Software",
-                icono: "fas fa-compact-disc",
-                resumen: "Sistemas y programas optimizados.",
-                detalle: "Instalación de Windows/Linux, suites de diseño, Office y software específico garantizando estabilidad total.",
-                mensajeWA: "Hola! Necesito INSTALAR PROGRAMAS o formatear mi equipo."
+                resumen: "Rescate de información en medios dañados.",
+                detalle: "Procesos de laboratorio para recuperar archivos borrados o de discos rígidos/SSD con fallas físicas o lógicas.",
+                msjWA: "Hola! Necesito ayuda urgente para RECUPERAR DATOS de un disco/memoria."
             }
         ];
 
-        const grid = document.getElementById('grid-servicios');
-        const phone = "543816156373";
+        const grid = document.getElementById('main-grid');
+        const overlay = document.getElementById('overlay');
 
-        // Generar las tarjetas automáticamente
-        servicios.forEach(s => {
+        // Renderizar Cards
+        serviciosData.forEach(s => {
             const card = document.createElement('div');
             card.className = 'card';
             card.innerHTML = `
@@ -377,33 +385,30 @@
                 <h3>${s.titulo}</h3>
                 <p>${s.resumen}</p>
             `;
-            card.onclick = () => openModal(s);
+            card.onclick = () => abrirEnfoque(s);
             grid.appendChild(card);
         });
 
-        const overlay = document.getElementById('modal-overlay');
-
-        function openModal(servicio) {
-            document.getElementById('modal-icon').className = servicio.icono;
-            document.getElementById('modal-title').innerText = servicio.titulo;
-            document.getElementById('modal-desc').innerText = servicio.detalle;
+        function abrirEnfoque(s) {
+            document.getElementById('m-icon').className = s.icono;
+            document.getElementById('m-title').innerText = s.titulo;
+            document.getElementById('m-desc').innerText = s.detalle;
             
-            // Crear el link de WhatsApp personalizado
-            const encodedMsg = encodeURIComponent(servicio.mensajeWA);
-            document.getElementById('modal-ws-link').href = `https://wa.me/${phone}?text=${encodedMsg}`;
+            const linkWA = `https://wa.me/${telefono}?text=${encodeURIComponent(s.msjWA)}`;
+            document.getElementById('m-link').href = linkWA;
             
             overlay.style.display = 'flex';
-            document.body.style.overflow = 'hidden'; // Evita scroll de fondo
+            document.body.style.overflow = 'hidden'; // Bloquear scroll
         }
 
-        function closeModal() {
+        function cerrarEnfoque() {
             overlay.style.display = 'none';
-            document.body.style.overflow = 'auto';
+            document.body.style.overflow = 'auto'; // Habilitar scroll
         }
 
-        // Cerrar al hacer clic fuera del contenido blanco
+        // Cerrar al hacer click fuera del contenido
         overlay.onclick = function(e) {
-            if (e.target === overlay) closeModal();
+            if (e.target === overlay) cerrarEnfoque();
         }
     </script>
 </body>
