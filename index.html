@@ -55,7 +55,6 @@
             text-decoration: none;
         }
 
-        /* Simulando el isotipo del monitor con herramientas */
         .logo-circle {
             background: var(--lila-tecnico);
             width: 45px;
@@ -75,13 +74,24 @@
             letter-spacing: 1px;
         }
 
-        /* --- Hero --- */
+        /* --- Hero con Fondo de Imagen --- */
         .hero {
-            padding: 160px 8% 100px;
-            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+            padding: 180px 8% 120px;
+            /* Degradado para asegurar legibilidad + Imagen de fondo técnica */
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.92) 30%, rgba(255, 255, 255, 0.7) 100%), 
+                        url('https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?q=80&w=1974&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Efecto Parallax */
             display: flex;
             align-items: center;
             gap: 50px;
+            min-height: 85vh;
+        }
+
+        .hero-content {
+            flex: 1.2;
+            z-index: 2;
         }
 
         .hero-content h1 {
@@ -89,29 +99,42 @@
             color: var(--lila-tecnico);
             line-height: 1.1;
             margin-bottom: 25px;
+            text-shadow: 0 2px 4px rgba(255,255,255,0.5);
         }
 
-        .hero-content h1 span { color: var(--celeste-circuito); }
+        .hero-content h1 span { 
+            color: var(--celeste-circuito); 
+            background: rgba(76, 161, 175, 0.1);
+            padding: 0 10px;
+            border-radius: 8px;
+        }
 
         .hero-content p {
-            font-size: 1.1rem;
-            max-width: 550px;
+            font-size: 1.2rem;
+            max-width: 580px;
             margin-bottom: 35px;
-            border-left: 4px solid var(--celeste-circuito);
+            border-left: 5px solid var(--celeste-circuito);
             padding-left: 20px;
+            font-weight: 400;
+            color: var(--gris-pizarra);
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(5px);
+            border-radius: 0 10px 10px 0;
         }
 
         .hero-img {
-            flex: 1;
+            flex: 0.8;
             display: flex;
             justify-content: center;
         }
 
+        /* Imagen flotante del Hero */
         .hero-img img {
             width: 100%;
-            max-width: 450px;
+            max-width: 400px;
             border-radius: 30px;
-            box-shadow: 20px 20px 60px rgba(0,0,0,0.1);
+            box-shadow: 20px 20px 60px rgba(78, 59, 115, 0.2);
+            border: 5px solid var(--blanco);
         }
 
         /* --- Grid de Servicios --- */
@@ -125,7 +148,6 @@
             color: var(--lila-tecnico);
             font-size: 2.5rem;
             margin-bottom: 50px;
-            position: relative;
         }
 
         .services-grid {
@@ -142,7 +164,6 @@
             cursor: pointer;
             transition: var(--transicion);
             text-align: left;
-            position: relative;
         }
 
         .card:hover {
@@ -165,7 +186,7 @@
 
         .card p { color: #666; font-size: 0.95rem; }
 
-        /* --- MODAL (ENFOQUE) --- */
+        /* --- MODAL --- */
         .modal-overlay {
             position: fixed;
             top: 0; left: 0;
@@ -186,7 +207,6 @@
             padding: 50px;
             border-radius: 25px;
             text-align: center;
-            position: relative;
             animation: zoomIn 0.3s ease;
         }
 
@@ -200,9 +220,6 @@
             color: var(--celeste-circuito);
             margin-bottom: 25px;
         }
-
-        .modal-content h2 { color: var(--lila-tecnico); margin-bottom: 20px; }
-        .modal-content p { margin-bottom: 35px; font-size: 1.1rem; color: #444; }
 
         .btn-container {
             display: flex;
@@ -222,16 +239,14 @@
             align-items: center;
             justify-content: center;
             gap: 10px;
-            font-size: 1rem;
         }
 
         .btn-wa { background: #25D366; color: white; }
         .btn-wa:hover { background: #1eb954; transform: scale(1.02); }
 
         .btn-close { background: #f0f0f0; color: var(--lila-tecnico); }
-        .btn-close:hover { background: #e5e5e5; }
 
-        /* --- SECCIÓN AYUDA GENERAL (CLIENTES INDECISOS) --- */
+        /* --- SECCIÓN AYUDA --- */
         .help-section {
             background: var(--lila-tecnico);
             padding: 80px 8%;
@@ -239,31 +254,24 @@
             color: white;
         }
 
-        .help-section h2 { font-size: 2.2rem; margin-bottom: 15px; }
-        .help-section p { opacity: 0.9; margin-bottom: 35px; max-width: 600px; margin-left: auto; margin-right: auto; }
-        
         .btn-general {
             background: var(--celeste-circuito);
             color: white;
             display: inline-flex;
-            max-width: 350px;
-            margin: 0 auto;
+            margin-top: 20px;
         }
-        .btn-general:hover { background: #3d8d99; transform: translateY(-5px); }
 
         footer {
             padding: 40px 8%;
             text-align: center;
             background: #1a1a1a;
             color: #888;
-            font-size: 0.9rem;
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero { flex-direction: column; text-align: center; padding-top: 130px; }
-            .hero-content h1 { font-size: 2.5rem; }
-            .modal-content { padding: 30px 20px; }
+        @media (max-width: 992px) {
+            .hero { flex-direction: column; text-align: center; padding-top: 140px; background-attachment: scroll; }
+            .hero-content h1 { font-size: 2.8rem; }
+            .hero-img { display: none; } /* Ocultamos la imagen flotante en móvil para lucir el fondo */
         }
     </style>
 </head>
@@ -278,12 +286,13 @@
 
     <section class="hero">
         <div class="hero-content">
-            <h1>Servicio Técnico en reparacion de <span>PC y celulares</span> </h1>
-            <p>Especialistas en la restauración técnica y mantenimiento de alto nivel. Diagnósticos precisos al alcance de tu mano.</p>
-            <a href="#servicios" class="btn btn-wa" style="display:inline-flex; background: var(--lila-tecnico);">Explorar Servicios</a>
+            <h1>Servicio Técnico en reparación de <span>PC y celulares</span></h1>
+            <p>Especialistas en la restauración técnica y mantenimiento de alto nivel. Diagnósticos precisos al alcance de tu mano con rigor de laboratorio.</p>
+            <a href="#servicios" class="btn btn-wa" style="display:inline-flex; background: var(--lila-tecnico); width: auto;">Explorar Servicios</a>
         </div>
         <div class="hero-img">
-            <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=800&q=80" alt="Tech Lab">
+            <!-- Imagen secundaria para dar profundidad -->
+            <img src="https://images.unsplash.com/photo-1597733336794-12d05021d510?auto=format&fit=crop&w=800&q=80" alt="Tech Lab">
         </div>
     </section>
 
@@ -296,10 +305,9 @@
         </div>
     </section>
 
-    <!-- SECCIÓN FINAL: ASESORAMIENTO PARA INDECISOS -->
     <section class="help-section">
         <h2>¿No estás seguro de qué necesita tu equipo?</h2>
-        <p>Si tu computadora falla pero no sabes el motivo, o necesitas asesoramiento técnico general, estamos para ayudarte sin compromiso.</p>
+        <p>Si tu dispositivo falla pero no sabes el motivo, estamos para ayudarte sin compromiso con un asesoramiento integral.</p>
         <a href="https://wa.me/543816156373?text=Hola%20ABBA!%20Tengo%20un%20problema%20con%20mi%20equipo%20pero%20no%20estoy%20seguro%20de%20qué%20servicio%20necesito.%20¿Me%20podrían%20asesorar?" 
            class="btn btn-general" target="_blank">
            <i class="fab fa-whatsapp"></i> SOLICITAR ASESORAMIENTO GENERAL
@@ -334,49 +342,48 @@
                 icono: "fas fa-laptop-medical",
                 resumen: "Soluciones a nivel componente y hardware.",
                 detalle: "Especialistas en fallas de placa base, reparación de circuitos integrados, cambio de pantallas y solución de problemas de encendido.",
-                msjWA: "Hola ABBA! Necesito un presupuesto para REPARACIÓN de mi equipo."
+                msjWA: "Hola ABBA! Necesito un presupuesto para REPARACIÓN de mi PC/Laptop."
+            },
+            {
+                titulo: "Reparación de Celulares",
+                icono: "fas fa-mobile-alt",
+                resumen: "Servicio técnico multimarca express.",
+                detalle: "Cambio de módulos, pines de carga, baterías y recuperación de equipos mojados. Rigor técnico en cada intervención.",
+                msjWA: "Hola ABBA! Necesito un presupuesto para REPARACIÓN de mi CELULAR."
             },
             {
                 titulo: "Instalación de Redes",
                 icono: "fas fa-network-wired",
-                resumen: "Infraestructura de red robusta y segura.",
-                detalle: "Diseño e instalación de redes cableadas (Ethernet) y optimización de señal Wi-Fi para hogares, oficinas y locales comerciales.",
+                resumen: "Infraestructura de red robusta.",
+                detalle: "Configuración de routers, cableado estructurado y optimización de señal Wi-Fi para hogares y empresas.",
                 msjWA: "Hola ABBA! Me interesa el servicio de INSTALACIÓN DE REDES."
             },
             {
                 titulo: "Limpieza y Mantenimiento",
                 icono: "fas fa-fan",
                 resumen: "Prevención de fallas térmicas.",
-                detalle: "Limpieza profunda de coolers, cambio de pasta térmica de alta conductividad y optimización física para alargar la vida útil.",
-                msjWA: "Hola ABBA! Quiero realizar un MANTENIMIENTO PREVENTIVO a mi equipo."
+                detalle: "Limpieza profunda y cambio de pasta térmica de alta gama para evitar sobrecalentamiento en laptops y PCs.",
+                msjWA: "Hola ABBA! Quiero realizar un MANTENIMIENTO a mi equipo."
             },
             {
-                titulo: "Instalación de Programas",
-                icono: "fas fa-compact-disc",
-                resumen: "Sistemas operativos y software profesional.",
-                detalle: "Formateo, instalación de Windows/Linux, suites de diseño, ingeniería y optimización de rendimiento de software.",
-                msjWA: "Hola! Necesito INSTALAR PROGRAMAS o formatear mi computadora."
-            },
-            {
-                titulo: "Equipos a Medida y Hardware",
+                titulo: "Equipos a Medida",
                 icono: "fas fa-microchip",
                 resumen: "Armado de PC según tus necesidades.",
-                detalle: "Venta de hardware seleccionado y armado de computadoras personalizadas para Gaming, Diseño o Estaciones de Trabajo.",
-                msjWA: "Hola ABBA! Busco asesoramiento para el ARMADO DE UNA PC a medida."
+                detalle: "Venta de hardware seleccionado y armado de computadoras personalizadas para Gaming, Diseño o Trabajo.",
+                msjWA: "Hola ABBA! Busco asesoramiento para el ARMADO DE UNA PC."
             },
             {
                 titulo: "Recuperación de Datos",
                 icono: "fas fa-database",
-                resumen: "Rescate de información en medios dañados.",
-                detalle: "Procesos de laboratorio para recuperar archivos borrados o de discos rígidos/SSD con fallas físicas o lógicas.",
-                msjWA: "Hola! Necesito ayuda urgente para RECUPERAR DATOS de un disco/memoria."
+                resumen: "Rescate de información sensible.",
+                detalle: "Procesos técnicos para recuperar archivos de discos rígidos, SSD o memorias con fallas físicas.",
+                msjWA: "Hola! Necesito ayuda urgente para RECUPERAR DATOS."
             }
         ];
 
         const grid = document.getElementById('main-grid');
         const overlay = document.getElementById('overlay');
 
-        // Renderizar Cards
         serviciosData.forEach(s => {
             const card = document.createElement('div');
             card.className = 'card';
@@ -393,23 +400,18 @@
             document.getElementById('m-icon').className = s.icono;
             document.getElementById('m-title').innerText = s.titulo;
             document.getElementById('m-desc').innerText = s.detalle;
-            
             const linkWA = `https://wa.me/${telefono}?text=${encodeURIComponent(s.msjWA)}`;
             document.getElementById('m-link').href = linkWA;
-            
             overlay.style.display = 'flex';
-            document.body.style.overflow = 'hidden'; // Bloquear scroll
+            document.body.style.overflow = 'hidden';
         }
 
         function cerrarEnfoque() {
             overlay.style.display = 'none';
-            document.body.style.overflow = 'auto'; // Habilitar scroll
+            document.body.style.overflow = 'auto';
         }
 
-        // Cerrar al hacer click fuera del contenido
-        overlay.onclick = function(e) {
-            if (e.target === overlay) cerrarEnfoque();
-        }
+        overlay.onclick = function(e) { if (e.target === overlay) cerrarEnfoque(); }
     </script>
 </body>
 </html>
